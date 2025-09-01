@@ -12,7 +12,7 @@ const SignUp: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
-  const API_BASE = "http://localhost:4000"; // Backend URL
+  const API_BASE = "https://note-taking-application-backend-odaf.onrender.com/"; // Backend URL
   const navigate = useNavigate();
 
   // Step 1: Send OTP
