@@ -80,10 +80,10 @@ const SignUp: React.FC = () => {
       {/* Left section */}
       <div className="flex-grow md:basis-[41%] p-4">
 
-        <header className="flex justify-between space-x-4 mb-10 md:hidden">
+{/*         <header className="flex justify-between space-x-4 mb-10 md:hidden">
           <img src="/time.png" alt="" />
           <img src="/status.png" alt="" />
-        </header>
+        </header> */}
 
         {/* Logo */}
         <div className="flex items-center justify-center md:justify-start mb-6 space-x-4 md:space-x-0">
