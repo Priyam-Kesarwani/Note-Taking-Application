@@ -10,7 +10,7 @@ const SignIn = () => {
   const [message, setMessage] = useState<string>("");
   const [keepLoggedIn, setKeepLoggedIn] = useState<boolean>(false);
 
-  const API_BASE = "https://note-taking-application-backend-odaf.onrender.com/"; // Backend URL
+  const API_BASE = "https://note-taking-application-backend-odaf.onrender.com"; // Backend URL
   const navigate = useNavigate();
 
   // Send OTP
