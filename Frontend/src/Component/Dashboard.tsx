@@ -16,7 +16,7 @@ const Dashboard = () => {
   const fetchNotes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/notes', {
+      const response = await fetch('https://note-taking-application-backend-odaf.onrender.com/notes', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/notes', {
+      const response = await fetch('https://note-taking-application-backend-odaf.onrender.com/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
