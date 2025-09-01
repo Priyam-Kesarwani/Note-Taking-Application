@@ -85,10 +85,10 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       
-       <header className="flex justify-between space-x-4 mb-10 md:hidden">
+{/*        <header className="flex justify-between space-x-4 mb-10 md:hidden">
           <img src="/time.png" alt="" />
           <img src="/status.png" alt="" />
-        </header>
+        </header> */}
         
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white shadow-md">
