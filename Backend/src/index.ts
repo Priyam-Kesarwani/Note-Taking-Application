@@ -246,18 +246,62 @@ app.get('/notes', authenticate, async (req: Request, res: Response) => {
   }
 });
 
+// Update the DELETE route
+// Import ObjectId at the top of the file with other imports
+import { ObjectId } from 'mongodb';
+
+// Replace the existing delete route with this updated version
+import mongoose from 'mongoose'; // Add this import at the top with other imports
+
 app.delete('/notes/:noteId', authenticate, async (req: Request, res: Response) => {
-  const userId = (req as any).userId;
-  const { noteId } = req.params;
+  try {
+    const userId = (req as any).userId;
+    const { noteId } = req.params;
 
-  const user = await User.findById(userId);
-  if (!user) return res.status(404).json({ message: "User not found" });
+    console.log('Attempting to delete note:', { userId, noteId }); // Debug log
 
-  user.notes = user.notes.filter(note => note._id?.toString() !== noteId); // ✅ Fix filter logic
-  await user.save();
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-  res.json({ message: "Note deleted successfully", notes: user.notes });
+    // Update the user document using MongoDB's $pull operator
+    const result = await User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: {
+          notes: { _id: new mongoose.Types.ObjectId(noteId) }
+        }
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!result) {
+      return res.status(404).json({ message: "Failed to delete note" });
+    }
+
+    // Format the remaining notes
+    const formattedNotes = result.notes.map(note => ({
+      id: note._id,
+      content: note.text
+    }));
+
+    res.json({ 
+      message: "Note deleted successfully", 
+      notes: formattedNotes 
+    });
+
+  } catch (error) {
+    console.error('Error deleting note:', error);
+    res.status(500).json({ 
+      message: "Server error", 
+      error: error instanceof Error ? error.message : 'Unknown error' 
+    });
+  }
 });
+
+
+
 
 interface ConnectDB {
   (): Promise<void>;

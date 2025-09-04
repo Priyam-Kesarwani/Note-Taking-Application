@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 interface Note {
-  id: number;
+  id: string;
   content: string;
 }
 
@@ -73,14 +73,31 @@ const Dashboard = () => {
     }
   };
 
-  const deleteNote = async (id: number) => {
-    try {
-      await fetch(`/api/notes/${id}`, { method: 'DELETE' });
-      setNotes(prev => prev.filter(note => note.id !== id));
-    } catch (error) {
-      console.error('Error deleting note:', error);
+ const deleteNote = async (id: string) => {
+  try {
+    const token = localStorage.getItem('token');
+    console.log('Deleting note with ID:', id); // Debug log
+
+    const response = await fetch(`http://localhost:4000/notes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to delete note');
     }
-  };
+
+    const data = await response.json();
+    console.log('Delete response:', data); // Debug log
+    
+    setNotes(data.notes);
+  } catch (error) {
+    console.error('Error deleting note:', error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
