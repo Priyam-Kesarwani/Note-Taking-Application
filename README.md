@@ -21,9 +21,9 @@ A full-stack **Note Taking Web Application** built with **React (TypeScript)** f
 
 ## Tech Stack
 
-| Frontend        | Backend         | Database | Styling      | Deployment |
-|-----------------|----------------|----------|--------------|------------|
-| React + TS      | Express + TS   | MongoDB  | Tailwind CSS | Vercel     |
+| Frontend        | Backend        | Database | Styling      | Deployment      |
+|-----------------|----------------|----------|--------------|-----------------|
+| React + TS      | Express + TS   | MongoDB  | Tailwind CSS | Vercel + Render |
 
 ---
 
