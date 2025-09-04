@@ -16,7 +16,7 @@ const Dashboard = () => {
   const fetchNotes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/notes', {
+      const response = await fetch('https://note-taking-application-backend-odaf.onrender.com/notes', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/notes', {
+      const response = await fetch('https://note-taking-application-backend-odaf.onrender.com/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,10 +102,10 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       
-       <header className="flex justify-between space-x-4 mb-10 md:hidden">
+{/*        <header className="flex justify-between space-x-4 mb-10 md:hidden">
           <img src="/time.png" alt="" />
           <img src="/status.png" alt="" />
-        </header>
+        </header> */}
         
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white shadow-md">
