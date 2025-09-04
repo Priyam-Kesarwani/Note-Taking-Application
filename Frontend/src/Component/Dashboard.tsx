@@ -78,7 +78,7 @@ const Dashboard = () => {
     const token = localStorage.getItem('token');
     console.log('Deleting note with ID:', id); // Debug log
 
-    const response = await fetch(`http://localhost:4000/notes/${id}`, {
+    const response = await fetch(`https://note-taking-application-backend-odaf.onrender.com/notes/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
