@@ -32,6 +32,7 @@ const SignUp: React.FC = () => {
       if (response.ok) {
         setOtpSent(true);
         setMessage("OTP sent successfully to your email.");
+        alert("Check your spam mails.");
       } else {
         setMessage(data.message || "Failed to send OTP.");
       }
